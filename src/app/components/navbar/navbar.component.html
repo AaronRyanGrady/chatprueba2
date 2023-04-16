@@ -1,0 +1,27 @@
+<!-- Image and text -->
+<nav class="navbar navbar-dark bg-dark">
+    <a class="navbar-brand" href="#">
+      <img src="https://i.blogs.es/e1feab/google-fotos/1366_2000.jpg" width="30" height="30" class="d-inline-block align-top" alt="">
+      Bootstrap
+    </a>
+
+    <div ngbDropdown class="d-inline-block" *ngIf="userLogged|async as user; else btnIngresar">
+      <button class="btn btn-outline-primary" id="dropdownBasic1" ngbDropdownToggle>
+        <img *ngIf="user.photoURL" src="{{user.photoURL}}" width="30" height="30" class="d-inline-block align-top" alt="">
+        {{user.displayName?user.displayName : user.email}}
+      </button>
+      <div ngbDropdownMenu aria-labelledby="dropdownBasic1">
+        <button ngbDropdownItem (click)="logout()">salir</button>
+      </div>
+    </div>
+    <!--<a class="navbar-brand" href="#" *ngIf="userLogged|async as user; else btnIngresar">
+        
+      </a>-->
+
+      <ng-template #btnIngresar>
+
+<button class="btn btn-outline-primary" routerLink="/login">Ingresar</button>
+
+      </ng-template>
+      
+  </nav>
